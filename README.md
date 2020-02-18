@@ -12,4 +12,4 @@ To test the blog locally, you need to install **bundle** and **Jekyll**. You may
 bundle exec jekyll serve
 ```
 
-After starting the server on your local machine, you can open a browser and visit [http://localhost:4000/learn](http://localhost:4000/learn).
+After starting the server on your local machine, you can open a browser and visit [http://localhost:4000/learn](http://localhost:4000/learn/).
