@@ -8,6 +8,7 @@ layout: default
   </header>
 
   <div class="post-content">
+    {%- assign date_format =  "%b %-d, %Y" -%}
     {% for category in site.categories %}
     {% if category[0] == page.category %} 
     <!-- <ul> -->
