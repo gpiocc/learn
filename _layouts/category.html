@@ -15,7 +15,7 @@ layout: default
     <div class="card-columns">
       {% for post in category[1] %}
         <div class="card">
-            <img src="/learn/assets/thumbnail/{{ post.thumbnail }}.jpg" class="card-img-top img-fluid" alt="...">
+            <img src="/learn/assets/thumbnail/{{ post.thumbnail }}" class="card-img-top img-fluid" alt="...">
             <div class="card-body">
                 <a href="{{ post.url | relative_url }}"><h5 class="card-title stretched-link">{{ post.title }}</h5></a>
                 <p class="card-text"> {{ post.abstract }} </p>
