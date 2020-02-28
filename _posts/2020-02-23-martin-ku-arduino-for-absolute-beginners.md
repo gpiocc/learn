@@ -4,10 +4,10 @@ title:  "Arduino for Absolute Beginners"
 date:   2020-02-23 20:14:23
 categories: [arduino]
 author: Martin Ku
-thumbnail: "arduino-for-absolute-beginner.png"
+thumbnail: "2020-02-23-martin-ku-arduino-for-absolute-beginner.png"
 abstract: "A hands-on tutorial about the Arduino development process for novices to enter the amazing world of physical computing."
 ---
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/arduino-uno.png" description="Arduino" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/arduino-uno.png" description="Arduino" %}
 
 #### Introduction
 
@@ -15,7 +15,7 @@ Arduino is an excellent hardware and software platform for entering the world of
 
 Since both the hardware and the software of Arduino are open source, different manufacturers can make their microcontrollers compatiable with the Arduino IDE. From the cheap Arduino clones from China to the popular BBC micro:bit, Arduino IDE can be used to write and upload programs.
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/arduino-ide.png" description="The Arduino IDE" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/arduino-ide.png" description="The Arduino IDE" %}
 
 In this tutorial, we will:
 
@@ -27,7 +27,7 @@ In this tutorial, we will:
 
 To achieve the above learning outcomes, we will try controlling an LED light by connecting and disconnecting a wire.
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/arduino-blink-with-wire.gif" description="The final product" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/arduino-blink-with-wire.gif" description="The final product" %}
 
 Although the artifact itself is trivial, this project is ***conceptually important***. Once you master all the concepts in this tutorial, you can build a wide variety of projects by yourself. 
 
@@ -42,11 +42,11 @@ Although the artifact itself is trivial, this project is ***conceptually importa
 
 You've probably seen the term GPIO somewhere, but what exactly is it? GPIO stands for **General Purpuse Input Output**. In short, you can use a GPIO pin as an input or as an output by writing suitable programs. That means we can use a GPIO pin to *read* signals from things like buttons, switches and sensors, or to *send* signals to other devices such as LEDs and motors to control these devices.
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/what-is-gpio.png" description="Two roles of a GPIO" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/what-is-gpio.png" description="Two roles of a GPIO" %}
 
 Popular platforms like Arduino, Raspberry Pi, micro:bit and ESP8266/ESP32 all have GPIOs. Makers can have excellent control over how these pins behave, and therefore they can create projects that go beyond our imagination.
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/board-with-gpio.jpg" description="Boards with GPIOs" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/board-with-gpio.jpg" description="Boards with GPIOs" %}
 
 #### 2. The basic structure of an Arduino program
 
@@ -57,13 +57,13 @@ A program is a set of instructions for a computer to perform specific tasks. We 
 *   The `setup` function, which is called **once** when the board is turned on.
 *   The `loop` function, which is called **repeatedly indefinitely** after the `setup` function is executed.
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/structure-of-arduino-program.png" description="Basic structure of an Arduino program" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/structure-of-arduino-program.png" description="Basic structure of an Arduino program" %}
 
 #### 3. Turn on and off an LED light programmatically
 
 Let's control a LED programatically. We will use Pin 13 of the Arduino board to control the LED directly. This pin is chosen as it has a built-in resistor protecting the LED from large current, and so we don't need to add an extra resistor. Connect the LED in the following way:
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/led-to-arduino.jpg" description="Connect the LED directly to the Arduino board" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/led-to-arduino.jpg" description="Connect the LED directly to the Arduino board" %}
 
 To set Pin 13 to output mode, we call the `pinMode` function inside the `setup` function.
 
@@ -91,15 +91,15 @@ That's quite a lot of codes, isn't it? But why not upload the sketch to the Ardu
 *   ***Tools &rarr; Port &rarr; the port used by the Arduino Uno***
 *   ***Tools &rarr; Programmer &rarr; AVRISP mkII***
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/upload-setting.png" description="Make sure the settings are correct before uploading the sketch" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/upload-setting.png" description="Make sure the settings are correct before uploading the sketch" %}
 
 After that, click the 'upload' button:
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/upload-button.png" description="The 'upload' and the 'verify' button" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/upload-button.png" description="The 'upload' and the 'verify' button" %}
 
 If everything is done correctly, you should be able to see the LED blinking!
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/led-blink.gif" description="Wow! You control an LED programmatically!" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/led-blink.gif" description="Wow! You control an LED programmatically!" %}
 
 **But** if things really go wrong, don't worry! Programmers spend a lot of time on *debugging* (fixing errors). You can find the code [in this repository](https://github.com/gpiocc/arduino-for-absolute-beginners/tree/master/blink). Check carefully (and patiently) what possible errors have been made. If all else fail, you can ask us through [our Facebook page](https://www.facebook.com/gpiocc)!.
 
@@ -136,7 +136,7 @@ Since the `loop` function runs repeatedly indefinitely, the LED is blinking all 
 
 In this practice, we will write a simple program to read a digital signal. But first, remove the LED from the Arduino board, and connect a male-to-male breadboard jumper to a GND pin. 
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/wire-to-arduino-gnd.png" description="There are three GND pins on the Arduino Uno, and they are all the same." %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/wire-to-arduino-gnd.png" description="There are three GND pins on the Arduino Uno, and they are all the same." %}
 
 Then, open a new sketch in the Arduino IDE. Write the `setup` function as follows:
 
@@ -161,15 +161,15 @@ void loop(){
 
 Go ahead and upload the sketch to the Arduino board. Then, in the menu, click ***Tools &rarr; Serial Monitor*** to open the Serial Monitor. Tick the two checkboxes 'Auto scroll' and 'Show timestamp', and select 'Newline' and '9600 buad' in the two dropdown menus.
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/serial-monitor.png" description="Serial Monitor" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/serial-monitor.png" description="Serial Monitor" %}
 
 Now, plug in the other end of the breadboard jumper to Pin 2 and pull it out repeatedly.
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/insert-remove-jumper.gif" description="Plug in and pull out repeatedly" %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/insert-remove-jumper.gif" description="Plug in and pull out repeatedly" %}
 
 The Serial Monitor should show new lines of texts whenever the breadboard jumper is in Pin 2.
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/serial-monitor-response.gif" description="New texts coming out only when the jumper is in Pin 2." %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/serial-monitor-response.gif" description="New texts coming out only when the jumper is in Pin 2." %}
 
 Let's look at the the `setup` and the `loop` functions in details. 
 
@@ -215,7 +215,7 @@ Let's look back a bit: when will the value of `pin_state` be `LOW`? When the jum
 
 One more note on this activity: plugging in and pulling out a jumper cable is a cumbersome task. Can we just use a button for this? Yes, we can, and we probably should. The above is the basic working principle of pretty much all buttons inside digital devices. 
 
-{% include image.html url="/learn/assets/post/Arduino-for-absolute-beginner/button.png" description="A button can save us all the hassles." %}
+{% include image.html url="/learn/assets/post/2020-02-23-martin-ku-Arduino-for-absolute-beginner/button.png" description="A button can save us all the hassles." %}
 
 In case you find any difficulties, [check out the model answer here](https://github.com/gpiocc/arduino-for-absolute-beginners/tree/master/digital_input).
 
