@@ -7,7 +7,7 @@ The blog can be accessed via https://gpiocc.github.io/learn/ or http://learn.gpi
 You may contribute to this blog as well! You may:
 1.  fork this repository
 2.  clone the forked repository to your computer (you may just clone the master branch only to reduce the download sizes)
-3.  add your entries to the `_posts` folder and your assets to the `assets/post` folders
+3.  create the new entry in the `_posts` folder and the asset folder in the `assets/post` folders (see `README.md` in these folders for the naming convention)
 4.  push to changes back to your forked repository Whenever you have completed an entry, 
 5.  create a new pull request to our 'publish' branch
 
