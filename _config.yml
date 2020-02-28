@@ -33,6 +33,7 @@ plugins:
 # to override the default setting.
 exclude:
   - README.md
+  - _posts/1970-1-1-your-name-sample.md
 #   - Gemfile
 #   - Gemfile.lock
 #   - node_modules
