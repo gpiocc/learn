@@ -4,7 +4,14 @@ This is a blog of GPIO.CC, an online maker community for sharing ideas about usi
 
 The blog can be accessed via https://gpiocc.github.io/learn/ or http://learn.gpio.cc .
 
-You may contribute to this blog as well! Just fork this repository and add your entries to the `_posts` folder. Whenever you have completed an entry, create a new pull request and we will review your post as soon as possible.
+You may contribute to this blog as well! You may:
+1.  fork this repository
+2.  clone the forked repository to your computer (you may just clone the master branch only to reduce the download sizes)
+3.  add your entries to the `_posts` folder and your assets to the `assets/post` folders
+4.  push to changes back to your forked repository Whenever you have completed an entry, 
+5.  create a new pull request to our 'publish' branch
+
+We will review your post as soon as possible!
 
 To test the blog locally, you need to install **bundle** and **Jekyll**. You may refer to [the official tutorial](https://jekyllrb.com/docs/installation/#requirements) from Jekyll to install the software properly. Once it's done, simply go to the directory of the cloned repository, and start the Jekyll server by entering:
 
