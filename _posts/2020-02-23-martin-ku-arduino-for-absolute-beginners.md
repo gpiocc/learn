@@ -151,7 +151,7 @@ Then, let's write the codes inside the `loop` function to read the signal at Pin
 
 ```c++
 void loop(){
-    int pin_state = digitalRead(input_pin);
+    int pin_state = digitalRead(2);
 
     if (pin_state == LOW){
         Serial.println("Cable inserted!");
@@ -194,7 +194,7 @@ To facilitate debugging, the Arduino IDE has a built in **Serial Monitor**. It a
 In the `loop` function:
 
 ```c++
-    int pin_state = digitalRead(input_pin);
+    int pin_state = digitalRead(2);
 ```
 
 The `digitalRead` function is called first to read the state of Pin 2 and store the state to the integer **variable** `pin_state`. If the voltage at Pin 2 is 5V, `digitalRead` returns a constant `HIGH`; otherwise, it returns a constant `LOW`.
