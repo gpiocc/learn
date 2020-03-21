@@ -175,13 +175,10 @@ It is time to consolidate the knowledge by making the final artifact. Let's use 
 
 {% include image.html url="/learn/assets/post/2020-03-08-martin-ku-analog-input-and-output-in-arduino/potentiometer-led-brightness.gif" description="It's like using a potential divider." %}
 
-You can modify the codes in the previous sections to achieve this. The only thing that you need to pay attention to is that the `analogRead` gives you a value from 0 to 1023, while the `analogWrite` function requires a value from 0 to 255. Thus, you may need a conversion function to help you:
+You can modify the codes in the previous sections to achieve this. The only thing that you need to pay attention to is that the `analogRead` gives you a value from 0 to 1023, while the `analogWrite` function requires a value from 0 to 255. Thus, you may need the `map` function to help you:
 
 ```c++
-int input_to_output(int input){
-    int result = 255 * input / 1023;
-    return result;
-}
+    map(value, from_min, from_max, to_min, to_max);
 ```
 
 Look at [the model answer here](https://github.com/martin-ku-hku/analog-input-and-output-in-arduino/blob/master/potentiometer-control-led/potentiometer-control-led.ino) when you complete the task, and ask us through [Facebook](https://www.facebook.com/gpiocc) if you find any difficulties.
