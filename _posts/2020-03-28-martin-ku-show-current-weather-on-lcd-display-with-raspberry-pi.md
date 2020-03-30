@@ -2,7 +2,7 @@
 layout: post
 title:  "Show Current Weather on an LCD Display with Raspberry Pi"
 date:   2020-03-27 00:00:01
-categories: [raspberrypi]
+categories: [raspberrypi, micropython]
 author: Martin Ku
 thumbnail: "2020-03-28-martin-ku-show-current-weather-on-lcd-display-with-raspberry-pi.png"
 abstract: "By using a Raspberry Pi and an LCD display, we can see the latest weather report from the Internet."
