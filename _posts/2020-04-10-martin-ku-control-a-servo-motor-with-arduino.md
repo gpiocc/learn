@@ -168,4 +168,4 @@ Here's the circuit diagram for your reference:
 
 {% include image.html url="/learn/assets/post/2020-04-10-martin-ku-control-a-servo-motor-with-arduino/pot-servo-circuit.png" description="" %}
 
-You may look at [the sample code here](https://github.com/martin-ku-hku/control-a-servo-motor-with-arduino/tree/master/potentiometer-control-servo). If you find any difficulties, you may also ask us [via our Facebook page](www.facebook.com/gpiocc).
+You may look at [the sample code here](https://github.com/martin-ku-hku/control-a-servo-motor-with-arduino/tree/master/potentiometer-control-servo). If you find any difficulties, you may also ask us [via our Facebook page](https://www.facebook.com/gpiocc).
