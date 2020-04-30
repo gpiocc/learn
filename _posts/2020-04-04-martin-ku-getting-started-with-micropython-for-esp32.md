@@ -56,7 +56,7 @@ Finally, click 'Install' to flash the firmware to the ESP32.
 
 {% include image.html url="/learn/assets/post/2020-04-04-martin-ku-getting-started-with-micropython-for-esp32/flashing-to-esp32.png" description="The esptool will flash the firmware to the ESP32" %}
 
-> **_NOTE:_**  For some ESP32 boards, you may need to push the 'EN' button on the board to get the flashing started.
+> **_NOTE:_**  For some ESP32 boards, you may need to push the 'EN' and the 'BOOT' buttons on the board to get the flashing started.
 
 #### Use the REPL
 
