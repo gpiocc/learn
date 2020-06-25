@@ -86,7 +86,7 @@ It contains several *hyperparameters* that are commonly seen when training neura
 
 **Learning rate**: The step size for updating the weights in the model when doing the gradient descent.
 
-To fully understand what these hyperparameters mean, you need to know the mathematics behind artificial neural network. That includes some basic linear algebra and calculus. Fortunately, the [3blue1brown Youtube channel]() introduces all of these things very clearly and concisely. You should definitely take a look of the following playlists if you are serious about machine learning:
+To fully understand what these hyperparameters mean, you need to know the mathematics behind artificial neural network. That includes some basic linear algebra and calculus. Fortunately, the [3blue1brown Youtube channel](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw) introduces all of these things very clearly and concisely. You should definitely take a look of the following playlists if you are serious about machine learning:
 
 *   [Essence of Linear Algebra](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
 *   [Essence of Calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
