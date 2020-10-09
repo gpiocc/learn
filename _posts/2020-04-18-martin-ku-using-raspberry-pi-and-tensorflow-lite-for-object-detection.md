@@ -159,7 +159,9 @@ Point the camera to other things and see if the program can perform the detectio
 
 {% include image.html url="/learn/assets/post/2020-04-18-martin-ku-using-raspberry-pi-and-tensorflow-lite-for-object-detection/detecting-mouse.gif" description="The type of object and the location of the object are detected." %}
 
-> **_NOTE:_**   On Raspberry Pi 4, you need to use the HDMI 1 output (the one closest to the USB-C power port) in order to see the preview. The HDMI 2 port and VNC will **not** work.
+> **_NOTE:_**   If you use VNC, make sure that you enable 'direct capture mode' in the VNC Server preference.
+
+> **_NOTE:_**   If you receive an error message saying that the file 'libf77blas.so.3' is missing, run `sudo apt install python-dev libatlas-base-dev` in the terminal to install the missing numpy dependencies.
 
 You can stop the program by pressing 'Ctrl + C'.
 
