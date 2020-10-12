@@ -91,6 +91,8 @@ pi@raspberrypi:~/ai$ python3 -m venv tfl
 
 After the command is executed, a new folder `tfl` is created. The folder will contain all the Python libraries that can be used *only if you activate this specific virtual environment*. Everytime we activate the `tfl` virtual environment, we need to execute the `tfl/bin/activate` file with the `source` command.
 
+> **_NOTE:_**   If you need to use the system packages (e.g. the RPi.GPIO library), you should add the flag `--system-site-packages`.
+
 ```console
 pi@raspberrypi:~/ai$ source tfl/bin/activate
 ```
