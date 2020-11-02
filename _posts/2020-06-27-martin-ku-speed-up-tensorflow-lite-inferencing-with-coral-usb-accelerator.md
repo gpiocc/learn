@@ -2,7 +2,7 @@
 layout: post
 title:  "Speed up TensorFlow Lite Inferencing with Coral USB Accelerator"
 date:   2020-06-27 00:00:01
-categories: [raspberrypi]
+categories: [raspberrypi,ml]
 author: Martin Ku
 thumbnail: "2020-06-27-martin-ku-speed-up-tensorflow-lite-inferencing-with-coral-usb-accelerator.png"
 abstract: "While Raspberry Pi is not a powerful computer for AI computation, it's possible to speed up the inferencing speed signficiantly by attaching a Tensor Processing Unit to it."
