@@ -2,7 +2,7 @@
 layout: post
 title:  "Custom TensorFlow Image Classification with Teachable Machine"
 date:   2020-06-20 00:00:01
-categories: [raspberrypi]
+categories: [raspberrypi,ml]
 author: Martin Ku
 thumbnail: "2020-06-20-custom-tensorflow-image-classification-with-teachable-machine.png"
 abstract: "Without Google's Teachable Machine, we can train our own simple image classification models without writing a single line of code."
