@@ -2,7 +2,7 @@
 layout: post
 title:  "Using Raspberry Pi and TensorFlow Lite for Object Detection"
 date:   2020-04-18 00:00:01
-categories: [raspberrypi]
+categories: [raspberrypi,ml]
 author: Martin Ku
 thumbnail: "2020-04-18-martin-ku-using-raspberry-pi-and-tensorflow-lite-for-object-detection.png"
 abstract: "By using the Raspberry Pi camera and TensorFlow Lite, it is quite easy to use AI models to perform object detection."
