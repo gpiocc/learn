@@ -4,7 +4,7 @@ title:  "Use Jupyter to Experiment with Raspberry Pi's GPIOs"
 date:   2021-01-16 00:00:01
 categories: [raspberrypi]
 author: Martin Ku
-thumbnail: "2021-01-16-martin-ku-use-jupyter-to-experiment-with-raspberry-pi-gpio.png"
+thumbnail: "2021-01-16-martin-ku-use-jupyter-to-experiment-with-raspberry-pi-gpio.gif"
 abstract: "By using Jupyter Lab, we can try doing physical computing in an easy and interactive way."
 ---
 
