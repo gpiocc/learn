@@ -34,6 +34,10 @@ Then, we open the Chromium web browser and go to [Google's Colab https://colab.r
 
 > ***Note:***  You will need to log on with a Google account before you can proceed.
 
+We will need to use the GPU of Colab to accelerate the training. Click **Runtime &rarr; Change runtime type** in the top menu. Then, select "GPU" in the *Hardware accelerator* dropdown menu and click **Save**.
+
+{% include image.html url="/learn/assets/post/2021-09-07-train-custom-object-detection-model-with-tensorflow-lite-model-maker/gpu.png" description="Use GPU runtime" %}
+
 Click the **Connect** button on the right to start a Colab session. Once the session is started, click the 'folder' button on the left to open the file manager. Drag the zip file of the object detection datasets directly to the file manager or click the **Upload to session storage** button to upload the file.
 
 {% include image.html url="/learn/assets/post/2021-09-07-train-custom-object-detection-model-with-tensorflow-lite-model-maker/upload-file.png" description="Upload the data file" %}
