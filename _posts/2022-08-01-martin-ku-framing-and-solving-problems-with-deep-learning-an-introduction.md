@@ -562,7 +562,7 @@ This gradient-based method of updating the model's parameters is called ***gradi
 That's quite complicated! Fortunately, we don't need to deal with this complexity in Keras to train the neural network. All we need to do is to specify the ***optimizer*** when calling the `compile` method of the model.
 
 ```python
-model.compile(optimizer='sgd' loss='categorical_crossentropy')
+model.compile(optimizer='sgd', loss='categorical_crossentropy')
 ```
 
 Our model is finished! All we need to do is to feed the training data into it and train it. Let's prepare some training data [^trainingdata]. 
