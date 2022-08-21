@@ -173,7 +173,7 @@ $$
 \end{pmatrix}
 $$
 
-In fact, we can get a vectorized version of the Iris dataset from the `sklearn` Python package[^sklearn].
+In fact, we can get a vectorized version of the Iris dataset from the `sklearn` Python package.
 
 <blockquote>
 <details>
@@ -439,7 +439,7 @@ For now, the weights and biases in our model are just random values. Therefore, 
 
 In the previous section, we turned a higher dimensional feature vector into a lower dimensional output vector with the information that we need. Such affine transformation extracts useful information and discards useless information. However, what if the information of the feature vector is inadequate for extracting useful information?
 
-Neural network provides a way to solve this problem. Recall that multiplying a $$n \times m$$ matrix to a m-dimensional column vector will output a n-dimensional column vector. If n > m, we should be able to produce a vector of higher dimension, i.e. the output vector has more information than the input vector! 
+Neural network provides a way to solve this problem. Recall that multiplying a $$n \times m$$ matrix to a m-dimensional column vector will output a n-dimensional column vector. If $$n > m$$, we should be able to produce a vector of higher dimension, i.e. the output vector has more information than the input vector! 
 
 Let say we want to transform the 4-dimensional feature vector of the Iris data set to a 6-dimensional vector, and use this 6-dimensional vector to produce the final result. In Keras, that means we need to use two `Dense` layers. 
 
@@ -608,15 +608,15 @@ Similarly, whenever the slope is *negative*, we can *increase* the value of $$w$
 
 {% include image.html url="/learn/assets/post/2022-08-01-martin-ku-framing-and-solving-problems-with-deep-learning-an-introduction/grad_descent_4.png" description="" %}
 
-Mathematically, the slope of the curve at $$w=w_{0}$$ is $$L'(w_{0})$$, where $$L'$$ is the ***derivative*** of the function $$L$$. Notice that in order to minimise the value of $$L$$:
+Mathematically, the slope of the curve at $$w=w_{0}$$ is $$L'(w_{0})$$, where $$L'$$ is the ***derivative*** of the function $$L$$. Notice that:
 
 1. The sign of the change in $$w$$ at $$w=w_{0}$$ is *opposite to* the slope at that point. 
 2. The absolute value of the slope is bigger (i.e. the tangent is steeper) when $$A$$ is away from the minimum position. 
 
-Therefore, the amount of the parameter $$w$$ changes, $$\Delta w$$, should:
+Therefore, in order to reduce the value of $$L$$, the amount of the parameter $$w$$ changes, $$\Delta w$$, should:
 
-3. have its sign opposite to the derivative,
-4. have its absolute value proportional to the absolute value of the derivative.
+1. have its sign opposite to the derivative,
+2. have its absolute value proportional to the absolute value of the derivative.
 
 Therefore, we can define
 
