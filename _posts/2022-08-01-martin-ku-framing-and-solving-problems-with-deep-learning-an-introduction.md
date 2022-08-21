@@ -27,15 +27,23 @@ abstract: "In this tutorial, we are going to explore how we can frame a non-math
   - [Loss functions](#loss-functions)
   - [Gradient descent](#gradient-descent)
 - [Summary](#summary)
-- [Notes](#notes)
 
 ### Prologue
 
 ***Deep learning*** ignites the AI revolution in the past 10 years. We can often hear the news about ground-breaking technologies based on deep learning. You may wonder: since it's so revolutionary and important, it must be something complicated? Well, **not at all**. 
 
-The idea of deep learning is actually incredible simple. Moreover, it's incredibly easy to *build your own deep learning models to solve your problems*. You don't need a degree in computer science, mathematics or statistics to become a deep learning expert. If you master a few fundamental concepts of deep learning well, and practice enough on framing and solving problems with deep learning, you can be a deep learning expert as well. 
+The idea of deep learning is actually incredibly simple. Moreover, it's very easy to *build your own deep learning models to solve your problems*. You don't need a degree in computer science, mathematics or statistics to become a deep learning expert. If you master a few fundamental concepts of deep learning well, and practice enough on framing and solving problems with deep learning, you can be a deep learning expert as well. 
 
-In this tutorial, we will learn how to frame and solve a problem with deep learning. We gradually construct our own deep learning model as we discuss and connect different concepts of deep learning. Let's get started!
+In this tutorial, we will attempt to solve this problem:
+
+<blockquote>
+<strong style="color: brown;">
+Given 4 different measurements of a flower, classify the flower into one of the three kinds of iris.
+</strong>
+</blockquote>
+
+
+This problem may not look like a maths and coding problem at first, but we will frame this problem into one that is. Then, we will gradually construct our deep learning model when discussing and connecting different concepts of deep learning, and eventually solve this problem with our deep learning model. Let's get started!
 
 ### Machine Learning
 
@@ -43,11 +51,11 @@ First of all, we need to clarify three terms that are commonly used together: AI
 
 {% include image.html url="/learn/assets/post/2022-08-01-martin-ku-framing-and-solving-problems-with-deep-learning-an-introduction/ai_ml_dl.png" description="Relationship between AI, machine learning and deep learning" %}
 
-As we can see, machine learning is a kind of artificial intelligence (AI), and deep learning is a kind of machine learning. We will mainly discuss deep learning in this tutorial, but let's look at AI and machine learning first.
+As we can see, machine learning is a kind of artificial intelligence (AI), and deep learning is a kind of machine learning. We will mainly discuss about deep learning in this tutorial, but let's look at AI and machine learning first.
 
 **AI**
 
-Technologies that automate intellectual tasks performed by humans. Strong AI technologies, which can perform a wide variety of cognitive tasks like humans, currently only exist in fictions and movies. Weak AI technologies that can do specific tasks better than humans are the AI that we have developed so far.
+AI are technologies that automate intellectual tasks performed by humans. Strong AI technologies, which can perform a wide variety of cognitive tasks like humans, currently only exist in fictions and movies. Weak AI technologies that can do specific tasks better than humans are the AI that we have developed so far.
 
 **Machine learning**
 
@@ -55,13 +63,20 @@ In traditional programming, we define some rules and a computer program follow t
 
 {% include image.html url="/learn/assets/post/2022-08-01-martin-ku-framing-and-solving-problems-with-deep-learning-an-introduction/traditional_programming.png" description="" %}
 
-In machine learning, we input some data and answers[^supervisedlearning] to a program, and the program figures out the rules for us.
+In machine learning, we input some data and answers to a program, and the program figures out the rules for us.
 
 {% include image.html url="/learn/assets/post/2022-08-01-martin-ku-framing-and-solving-problems-with-deep-learning-an-introduction/machine_learning.png" description="" %}
 
-A machine learning model is trained rather than pre-programmed. During the training, the model is presented with *many* examples. The training algorithms find the ***statistical structure*** of these examples. Once trained, the model can be used to to make ***inferences***.  
+<blockquote>
+<details>
+<summary>Supervised learning</summary>
+Data together with answers are labelled data, and machine learning with labelled data is called <strong>supervised learning</strong>. In fact, there are <strong>unsupervised</strong> machine learning methods, but they are out of the scope of this tutorial.
+</details>
+</blockquote>
 
-Enough terminologies for now. Let's look at a simple example of machine learning: finding a best-fit line. The following Python code generates some data with linear relation and the best-fit line for the data.
+A machine learning model is trained rather than pre-programmed. During the training, the model is presented with *many* examples. The training algorithms find the ***statistical structure*** of these examples. Once trained, the model can be used to make ***inferences***. 
+
+Enough terminologies for now. Let's look at a simple example of machine learning: finding a best-fit line. The following Python code generates some random data with linear relation and the best-fit line for the data.
 
 
 ```python
@@ -81,7 +96,7 @@ plt.plot(xs, m*xs+c)
 The following are the components of machine learning when finding the best-fit line:
 * The dots in the scatter diagram are the data use for training the model. They have the inputs (x values) and the answers (y values). 
 * The learning algorithm (implemented by the `polyfit` function) finds the statistical structure of the data (a straight line with particular slope and y-intercept). 
-* After obtaining the best-fit line, we can use it to predict the y value for a given x value[^interpolation], i.e. to make inferences.
+* After obtaining the best-fit line, we can use it to predict the y value for a given x value, i.e. to make inferences.
 
 In short, machine learning is finding a function such that the function can turn the input into the answer we want.
 
@@ -89,7 +104,7 @@ After knowing what machine learning is, we can start learning about deep learnin
 
 ### Vector
 
-The first important concept of deep learning is ***vector***, which is just an array of numbers. For example, these are two vectors:
+The first important concept of deep learning is ***vector***, which is just an array of numbers. These are two examples of vectors:
 
 $$ \textbf{a} = 
 \begin{pmatrix}
@@ -106,9 +121,23 @@ $$ \textbf{a} =
 \end{pmatrix}
 $$
 
-The number of entries in a vector is called the ***dimension***[^dimension]. In the above examples, the dimension of $$\textbf{a}$$ is 2, and the dimension of $$\textbf{b}$$ is 4.
+The number of entries in a vector is called the ***dimension***. In the above examples, the dimension of $$\textbf{a}$$ is 2, and the dimension of $$\textbf{b}$$ is 4.
 
-In Python, we can use either a NumPy[^numpy] array to represent a vector. The vectors $$\textbf{a}$$ and $$\textbf{b}$$ in our examples can be created as follows.
+<blockquote>
+<details>
+<summary>Dimension</summary>
+This definition of dimension is for the context of deep learning only. In linear algebra, the term dimension describes the vector space rather than the vector itself. 
+</details>
+</blockquote>
+
+In Python, we can use either a NumPy array to represent a vector. The vectors $$\textbf{a}$$ and $$\textbf{b}$$ in our examples can be created as follows.
+
+<blockquote>
+<details>
+<summary>NumPy</summary>
+NumPy is a Python library that supports efficient operations on multi-dimensional arrays and matrices. 
+</details>
+</blockquote>
 
 ```python
 import numpy as np
@@ -121,7 +150,7 @@ Although vectors look simple, we will see that representing information with vec
 
 ### Represent information with vectors
 
-The *Iris flower data set* is a classic dataset for studying statistical learning. The data set contains 3 classes of iris plants (setosa, versicolor and virginica) of 50 instances each. Each instance contains the sepal and petal sizes. For example, the following is one of the instances in the data set.
+The *Iris flower data set* is a classic data set for studying statistical learning. The data set contains 3 classes of iris plants (setosa, versicolor and virginica) of 50 instances each. Each instance contains the sepal and petal measurements. For example, the following is one of the instances in the data set.
 
 ---
 * **sepal length**: `5.1 cm`
@@ -132,7 +161,7 @@ The *Iris flower data set* is a classic dataset for studying statistical learnin
 
 ---
 
-We can easily represent the flower's sizes with a vector.
+We can easily represent the flower's measurements with a vector.
 
 $$
 \text{sizes} = 
@@ -146,6 +175,13 @@ $$
 
 In fact, we can get a vectorized version of the Iris dataset from the `sklearn` Python package[^sklearn].
 
+<blockquote>
+<details>
+<summary>Sci-kit learn</summary>
+<a href='https://scikit-learn.org/stable/'>Scikit-learn</a> is a machine learning library that can be used for many kinds of machine learning tasks. It also comes with many data sets.
+</details>
+</blockquote>
+
 ```python
 from sklearn import datasets
 iris_dataset = datasets.load_iris()
@@ -153,7 +189,7 @@ features = iris_dataset['data']
 print(features[:5]) # Show the first 5 data
 ```
 
-The `iris_dataset` is a dictionary. The `data` entry is a numpy array that contains the four features of all the data in the data set. As we can see in the first 5 data, these features are vectors already.
+The `iris_dataset` is a dictionary. The `data` entry is a NumPy array that contains the four features of all the data in the data set. As we can see in the first 5 data, these features are vectors already.
 
 #### One-hot encoding
 
@@ -167,7 +203,7 @@ for label in labels[:5]: # print the first 5 targets
   print(f'target in text: {class_names[label]}')
 ```
 
-We can see that the class of flower in each datum is encoded with a number. 0 means `setosa`, 1 means `versicolor`, and 2 means `virginica`. In this case, we can use ***one hot encoding*** to turn it into a vector. Since the data set contains 3 classes of iris plants, we can use a 3-dimensional vector to represent the data `setosa`.
+The class of flower in each datum is encoded with a number. 0 means `setosa`, 1 means `versicolor`, and 2 means `virginica`. We will use ***one hot encoding*** to turn it into a vector. Since the data set contains 3 classes of iris plants, we can use a 3-dimensional vector to represent the data `setosa`.
 
 $$
 \text{setosa} = 
@@ -204,7 +240,7 @@ In this perspective, using `[1, 0, 0]` to represent `setosa` means the probabili
 
 {% include image.html url="/learn/assets/post/2022-08-01-martin-ku-framing-and-solving-problems-with-deep-learning-an-introduction/samplespace.png" description="" %}
 
-In this way, one-hot encoding provides exactly the answers that a correct machine learning model should produce: the probability of belonging to the target class is 1, and the probabilities of belonging to other classes are 0. 
+In this way, one-hot encoding provides the ideal answers that a machine learning model should produce: the probability of belonging to the target class is 1, and the probabilities of belonging to other classes are 0. 
 
 We can turn the array of labels `targets` into an array of one-hot encoded vectors `vectorized_targets` with the `OneHotEncoder` class in the `sklearn` library.
 
@@ -215,18 +251,27 @@ vectorized_labels = encoder.fit_transform(labels.reshape((-1, 1)))
 print(vectorized_labels[:5]) # print the first 5 vectors
 ```
 
-In the above code, an object of the `OneHotEncoder` class is instantiated. By calling the `fit_transform` method of this object with the `target` array as a parameter [^reshapearray], we turn the categorical values in the `target` array into an array of vectors that are produced with the one-hot encoding scheme.
+In the above code: 
+1. An object of the `OneHotEncoder` class is instantiated. 
+2. Call the `fit_transform` method of the `OneHotEncoder` object with the `target` array as a parameter. The categorical values in the `target` array are turned into vectors according to the one-hot encoding scheme.
+
+<blockquote>
+<details>
+<summary>Reshaping array</summary>
+Since the <code>fit_transform</code> function accepts a rank-2 NumPy array, we need to reshape the array `target` into an array with two axes. See <a href='https://www.w3schools.com/python/numpy/numpy_array_reshape.asp'>this w3schools tutorial</a> if you want to know more about reshaping in NumPy.
+</details>
+</blockquote>
 
 With the features and target of each datum being vectors now, we can frame the task of classifying iris flowers into a machine learning problem: 
 
 
-<div style="background-color: beige; font-weight: bold;">
-Can we find a function such that this function can turn the input feature vectors into a vector of probabilities of the flower belonging to different classes?
-</div>
+<blockquote>
+<strong style="color:brown;">Can we find a function such that this function can turn the input feature vectors into a vector of probabilities of the flower belonging to different classes?</strong>
+</blockquote>
 
 ### Affine transformation
 
-We want to find a function such that for a feature vector $$\textbf{c}$$, $$ f(\textbf{c})$$ will give us the probabilities that the flower belongs to different classes. For instance, we want $$f$$ to do the following with the example in the last section: 
+We want to find a function such that for a feature vector $$\textbf{c}$$, $$ f(\textbf{c})$$ will give us the probabilities that the flower belongs to different classes. For instance: 
 
 $$
 f(\begin{pmatrix}
@@ -242,9 +287,16 @@ f(\begin{pmatrix}
 \end{pmatrix}
 $$
 
-The input is a 4-dimensional vector, and the output is a 3-dimensional vector. What kind of function can achieve this? 
+The input is a 4-dimensional vector, and the output is a 3-dimensional vector. What kind of function can achieve this? From linear algebra, we know that multiplying a $$3\times4$$ matrix to a 4-dimensional column vector will output a 3-dimensional column vector.  
 
-From linear algebra, we know that multiplying a $$3\times4$$ matrix to a 4-dimensional column vector will output a 3-dimensional column vector. [^linearalgebra] Let 
+<blockquote>
+<details>
+<summary>Linear algebra</summary>
+If you want to know more about matrix operations, you can read <a href='https://www.deeplearningbook.org/contents/linear_algebra.html'>the chapter about Linear Algebra</a> in <a href='https://www.deeplearningbook.org'>Deep Learning</a> by Ian Goodfellow, Yoshua Bengio and Aaron Courville.
+</details>
+</blockquote>
+
+Let 
 
 $$
 \textbf{c} = \begin{pmatrix}
@@ -296,7 +348,7 @@ $$ e_{1} = w_{11}c_{1} + w_{12}c_{2} + w_{13}c_{3} + w_{14}c_{4} $$ is the ***we
 The fact that ***each entry of the output vector is a weighted sum of the entries of the input vector*** is an important property for us to exploit. 
 
 
-Suppose the absolute value[^greaterweight] of $$ w_{11}$$ is much greater than that of $$ w_{12} $$. Then the term $$ w_{11}c_{1}$$ will have more *influence* on the weighted sum $$ e_{1} $$ than $$ w_{12}c_{2} $$. Recall that $$c_{1}$$ and $$c_{2}$$ represent the features sepal length and sepal width respectively. Setting the weight of each feature is essentially ***setting how influential each feature should be***. In other words, we use these weights to *extract information* that is useful for performing the classification task.
+Suppose the absolute value of $$ w_{11}$$ is much greater than that of $$ w_{12} $$ (we consider absolute values because the weights can be negative). Then the term $$ w_{11}c_{1}$$ will have more *influence* on the weighted sum $$ e_{1} $$ than $$ w_{12}c_{2} $$. Recall that $$c_{1}$$ and $$c_{2}$$ represent the features sepal length and sepal width respectively. Setting the weight of each feature is essentially ***setting how influential each feature should be***. In other words, we use these weights to *extract information* that is useful for performing the classification task.
 
 Other than multiplying the weight matrix, we can also further transform the output vector by adding a constant vector to it. Let
 
@@ -320,9 +372,17 @@ $$
 
 The matrix $$\textbf{b}$$ just shifts each entry of $$\textbf{Wc}$$ by a constant.  Adding a vector to another one is also called ***translation***. A combination of linear transformations and translations is called an ***affine transformation***. 
 
-There are a number of terminologies that you may encounter quite often. Let's take a look of these terms.
+There are a few terminologies that you may encounter quite often. Let's take a look of these terms.
 
-- ***Artificial neural network (ANN)***: A machine learning model that utilizes affine transformations is called an artifical neural network [^ann].
+- ***Artificial neural network (ANN)***: A machine learning model that utilizes affine transformations is called an artificial neural network.
+
+<blockquote>
+<details>
+<summary>Neural network</summary>
+Despite the name contains 'neural network', and it is often said to be 'inspired' by how a human brain works, artificial neural network has very little to do with neuroscience.
+</details>
+</blockquote>
+
 - ***Neuron***: An entry in the input or output vectors is called a neuron. 
 - ***Weight***: The linear transformation matrix $$\textbf{W}$$ above is called the weight matrix. 
 - ***Bias***: The translation matrix $$\textbf{b}$$ above is called the bias matrix. 
@@ -330,17 +390,24 @@ There are a number of terminologies that you may encounter quite often. Let's ta
 
 #### Our first neural network
 
-If you find that the above mathemaatics is a bit overwhelming, the good news is we don't need to deal with the messy linear algebra when building an ANN with the TensorFlow Keras APIs. To begin, we import the TensorFlow library.
+If you find that the above mathematics is a bit overwhelming, the good news is we don't need to deal with the messy linear algebra when building an ANN with the TensorFlow Keras APIs. To begin, we import the TensorFlow library.
 
 ```python
 import tensorflow as tf
 ```
 
-Then, we create a placeholder of the input vector [^tensor].
+Then, we create a placeholder of the input vector.
 
 ```python
 inputs = tf.keras.Input(shape=(4, ))
 ```
+
+<blockquote>
+<details>
+<summary>Tensor</summary>
+Actually, TensorFlow processes input vectors in batches. Therefore, this <code>Input</code> data structure is a multi-dimensional array called <strong>tensor</strong> (not to be confused with 'tensor' in <a href='https://en.wikipedia.org/wiki/Tensor_(disambiguation)'>various different mathematics contexts</a>) instead of a single vector.
+</details>
+</blockquote>
 
 The parameter `shape` indicates that there are 4 entries in the input vector.
 
@@ -370,7 +437,7 @@ For now, the weights and biases in our model are just random values. Therefore, 
 
 ### Deep neural network
 
-In the previous section, we turned a higher dimensional feature vector into a lower dimensional output vector with the information that we need. Such affine transformation extracts useful information and disgards useless information. However, what if the information of the feature vector is inadequate for extracting useful information?
+In the previous section, we turned a higher dimensional feature vector into a lower dimensional output vector with the information that we need. Such affine transformation extracts useful information and discards useless information. However, what if the information of the feature vector is inadequate for extracting useful information?
 
 Neural network provides a way to solve this problem. Recall that multiplying a $$n \times m$$ matrix to a m-dimensional column vector will output a n-dimensional column vector. If n > m, we should be able to produce a vector of higher dimension, i.e. the output vector has more information than the input vector! 
 
@@ -383,26 +450,26 @@ model = tf.keras.Model(inputs=inputs, outputs=outputs_2)
 model.summary()
 ```
 
-Theoretically, `outputs_1` should contains more information than `inputs` as it has a higher dimension. With more information, the model is more likely to produce useful results in the final output.
+Theoretically, `outputs_1` should contains more information than `inputs` as it has a higher dimension. The extra information may be useful for the model to produce better results in the final output.
 
-However, there is a catch of this approach. Mathematically, the above code is equivalent to transforming the input vector $$\textbf{c}$$ as follows:
+However, there is a catch in this approach. Mathematically, the above code is equivalent to transforming the input vector $$\textbf{c}$$ as follows:
 
 $$
 \textbf{W}_{2}(\textbf{W}_{1}(\textbf{c})+\textbf{b}_{1}) + \textbf{b}_{2} = \textbf{W}_2\textbf{W}_{1}(\textbf{c}) + \textbf{W}_{2}(\textbf{b}_{1}) + \textbf{b}_{2}
 $$
 
 
-It is easy to verify that $$ \textbf{W}_{2}\textbf{W}_{1} $$ itself is a *single* $$ 4 \times 3$$ matrix. Therefore, the input vector $$\textbf{c}$$ is transformed directly to a 3-dimensional vector. The unhidden features are never recovered before the finals classification.
+It is easy to verify that $$ \textbf{W}_{2}\textbf{W}_{1} $$ itself is a *single* $$ 4 \times 3$$ matrix. Therefore, the input vector $$\textbf{c}$$ is transformed directly to a 3-dimensional vector. The unhidden features are not really recovered.
 
-This issue roots from the fact that the composite function of two linear functions is also just a linear function. We need a way to 'disrupt' the linearity of the composite function inside our model.  ***Activation functions*** are used in our model for exactly this purpose.
+This issue roots from the fact that the composite function of two linear functions is also just a linear function. Linear functions work well with data that are linearly distributed, but most data set are distributed in more complicated ways. We need a way to 'disrupt' the linearity of the composite function of the model.  ***Activation functions*** are used for exactly this purpose.
 
 #### Activation function
 
-The solution to this problem is to put a ***non-linear*** activation function in betweem two linear transformation. The resulting composite function will no longer be a linear transformation and become a lot more flexible. With this technique, we can build a neural network model that can actually recover hidden information from the data by using multiple layers of affine transformations. 
+In deep learning, we put a ***non-linear*** activation function in between two affine transformations. The resulting composite function will no longer be a linear function and become a lot more flexible. With this technique, we can build a neural network model that can recover hidden information from the data by using multiple layers of affine transformations. 
 
 Neural networks with multiple layers of affine transformations are called **deep neural networks**, and this technique of machine learning is called **deep learning**.  
 
-The **rectified linear unit** (or **ReLU**) is a commonly used activation function. It is defined as
+The **rectified linear unit** (or **ReLU**) is a commonly used activation function. It basically sets all negative values to 0, i.e.
 
 $$
 \begin{equation}
@@ -445,10 +512,22 @@ $$
 \sigma(z_i) = \frac{e^{z_{i}}}{\sum_{j=1}^K e^{z_{j}}} \ \ \ \text{for}\ i=1,2,\dots,K
 $$
 
-This looks really complicated! However, you only need to know two properties of this function: 
+The definition looks a bit complicated. Let's look at how softmax transforms some actual data.
+
+```python
+test_input = np.array([[20, 30, 40, 50]], dtype='float')
+test_tensor = tf.convert_to_tensor(test_input)
+softmax = tf.keras.activations.softmax
+test_softmax_output = softmax(test_tensor, axis=1)
+print(f'Output of softmax: {test_softmax_output}')
+print(f'Sum of softmax: {tf.reduce_sum(test_softmax_output, axis=1)}')
+```
+
+As we can see, softmax has the following properties: 
 
 1. It outputs a number between 0 to 1. 
-2. The sum of its outputs for all possible inputs is 1. 
+2. It preserves how big each entry of the array is, i.e. the bigger the value in the original array, the bigger the value that softmax will output.
+3. The sum of its outputs for all possible inputs is 1. 
    
 Therefore, softmax an ideal activation function for tasks involving the calculation of probabilities, such as the classification of Iris flower.
 
@@ -473,15 +552,17 @@ When we perform *binary classification* (i.e. we only need to classify whether a
 
 At first, DNNs look like magic: they can be used to recover lost information out of nowhere! It seems that we don't need to know what features we need at first to perform classification. Deep learning can recover or even discover the features for us.
 
-However, this is not always the case. A neural network simply transforms a vector in a multistage manner. By representing the data in multiple forms (vectors of different dimensions), we *may* be able to distill the information we need.
+However, this is not always the case. A neural network simply transforms a vector in a multistage manner. By representing the data in multiple forms (vectors of different dimensions), we *may* be able to extract the information we need.
 
-From a machine learning perspective, deep learning is not too different from finding best-fit lines. The only difference is rather than using a single straight line, we fit a curve in a higher dimensional ***latent space*** to the data. We still *assume* that the data change in this latent space in a predictable manner. We also train the model so that the curve is a good representation of how the data change. Finally, we use the curve to perform interpolation so that we can make predictions with unseen data. 
+From a machine learning perspective, deep learning is not too different from finding best-fit lines. The only difference is rather than using a single straight line, we fit a curve in a higher dimensional ***latent space*** to the data. We still *assume* that the data change in this latent space in a predictable manner. We also train the model so that the curve is a good representation of how the data change. Finally, we use the curve to make predictions with unseen data. 
+
+Therefore, **there is no other thing that can replace a representative and clean data set**. If the data set is a good sample of the population, it will be more likely for us to train a deep learning model that can fit the latent space of the population and make better predictions.
 
 ### Train the neural network
 
 #### Loss functions
 
-So far, we haven't discussed about an important aspect: what the weights and biases in the model should be. For now, the parameters in our model are just some random numbers. This model cannot do any meaningful predictions. However, how bad is this model? Is there an objective indicator of how bad this model is?
+For now, the parameters in our model are just some random numbers. This model cannot do any meaningful predictions. So what should be these weights and biases? However, we need to ask another important question first: <strong style="color: brown">how bad is this model?</strong> We need an objective indicator to determine this.
 
 Let's look at the `setosa` datum `[5.1, 3.5, 1.4, 0.2]` once again. After one-hot encoding, the label `setosa` is represented by `[1, 0, 0]`.
 
@@ -493,13 +574,13 @@ $$
 
 If the output of our neural network is closer to the real answer, the 'distance' between the output vector and answer vector will be smaller. Thus, this 'distance' can be used to measure how much error the model has made. We call this measurement of error a ***loss function***. 
 
-In practice, we use different loss functions for different purposes. For example, classification tasks typically use ***categorical cross-entropy*** as the loss function. This loss function is a bit more complicated, but using it in Keras is very simple. We can set the loss function by calling the `compile` method of the model:
+In practice, we use different loss functions for different purposes. For example, classification tasks typically use ***cross entropy*** as the loss function. This loss function is a bit more complicated, but using it in Keras is very simple. We can set the loss function by calling the `compile` method of the model:
 
 ```python
 model.compile(loss='categorical_crossentropy')
 ```
 
-The smaller the loss function, the better the model performs. Therefore, our goal of adjusting the parameters of the model is to ***minimise the loss function***. The technique to do this is the last piece of the puzzle: gradient descent.
+The smaller the loss function, the better the model performs. Therefore, <strong style="color: brown">our goal of adjusting the parameters of the model is to minimise the loss function</strong>. The technique to reduce the loss is *gradient descent*.
 
 #### Gradient descent
 
@@ -527,10 +608,15 @@ Similarly, whenever the slope is *negative*, we can *increase* the value of $$w$
 
 {% include image.html url="/learn/assets/post/2022-08-01-martin-ku-framing-and-solving-problems-with-deep-learning-an-introduction/grad_descent_4.png" description="" %}
 
-Mathematically, the slope of the curve at $$w=w_{0}$$ is $$L'(w_{0})$$, where $$L'$$ is the ***derivative*** of the function $$L$$. Notice that in order to minimise the value of $$L$$, the sign of the change in $$w$$ at $$w=w_{0}$$ is *opposite to* the slope at that point. Also, the absolute value of the slope is bigger (i.e. the tangent is steeper) when $$A$$ is away from the minimum position. Therefore, the amount of the parameter $$w$$ changes, $$\Delta w$$, should:
+Mathematically, the slope of the curve at $$w=w_{0}$$ is $$L'(w_{0})$$, where $$L'$$ is the ***derivative*** of the function $$L$$. Notice that in order to minimise the value of $$L$$:
 
-1. have its sign opposite to the derivative,
-2. have its absolute value proportional to the absolute value of the derivative.
+1. The sign of the change in $$w$$ at $$w=w_{0}$$ is *opposite to* the slope at that point. 
+2. The absolute value of the slope is bigger (i.e. the tangent is steeper) when $$A$$ is away from the minimum position. 
+
+Therefore, the amount of the parameter $$w$$ changes, $$\Delta w$$, should:
+
+3. have its sign opposite to the derivative,
+4. have its absolute value proportional to the absolute value of the derivative.
 
 Therefore, we can define
 
@@ -550,7 +636,7 @@ $$
 \Delta W = -\gamma \nabla G(v_{0})
 $$
 
-This gradient-based method of updating the model's parameters is called ***gradient descent***. There are a few gradient descent algorithms. The simplest ***stochastic gradient descent*** works as follows:
+This gradient-based method of updating the model's parameters is called ***gradient descent***. There are a few gradient descent algorithms. The simplest ***mini-batch stochastic gradient descent*** works as follows:
 
 1. Draw a batch of samples $$\textbf{x}$$ and the corresponding targets $$\textbf{y}_\text{true}$$.
 2. Apply the model on $$\textbf{x}$$ and obtain the predictions $$\textbf{y}_\text{pred}$$.
@@ -559,13 +645,20 @@ This gradient-based method of updating the model's parameters is called ***gradi
 5. Update the parameters of the model by moving the parameters slightly in the opposite direction of the gradient vector.
 
 
-That's quite complicated! Fortunately, we don't need to deal with this complexity in Keras to train the neural network. All we need to do is to specify the ***optimizer*** when calling the `compile` method of the model.
+Fortunately, we don't need to deal with this complexity in Keras to train the neural network. All we need to do is to specify the ***optimizer*** when calling the `compile` method of the model.
 
 ```python
 model.compile(optimizer='sgd', loss='categorical_crossentropy')
 ```
 
-Our model is finished! All we need to do is to feed the training data into it and train it. Let's prepare some training data [^trainingdata]. 
+Our model is finished. All we need to do is to feed the training data into it and train it. Let's prepare some training data.
+
+<blockquote>
+<details>
+<summary>Dividing a data set</summary>
+We should always divide the data set into the training and testing data sets first. We need a testing data set that is not seen by the model to test the model accurately.
+</details>
+</blockquote>
 
 ```python
 # Separate the data set into the training data set and testing data set
@@ -608,26 +701,26 @@ print(f'Real: {class_names[labels[test_index]]}')
 * We need to define a loss function for the training process to measure how much error the model makes.
 * We use gradient descent to update the parameters of a deep learning model. The training data are fed to the model, and loss function is evaluated. The gradients of the loss function with respect to the parameters are computed. The parameters are updated by moving to the opposite direction of the gradient vector.
 
-### Notes
+<!-- ### Notes -->
 
-[^dimension]: This definition of dimension is for the context of deep learning only. In linear algebra, the term dimension describes the vector space rather than the vector itself. 
+<!-- [^dimension]: This definition of dimension is for the context of deep learning only. In linear algebra, the term dimension describes the vector space rather than the vector itself.  -->
 
-[^numpy]: NumPy is a Python library that supports efficient operations on multi-dimensional arrays and matrices. 
+<!-- [^numpy]: NumPy is a Python library that supports efficient operations on multi-dimensional arrays and matrices.  -->
 
-[^linearalgebra]: If you want to know more about matrix operations, you can read [the chapter about Linear Algebra](https://www.deeplearningbook.org/contents/linear_algebra.html) in [Deep Learning](https://www.deeplearningbook.org) by Ian Goodfellow, Yoshua Bengio and Aaron Courville.
+<!-- [^linearalgebra]: If you want to know more about matrix operations, you can read [the chapter about Linear Algebra](https://www.deeplearningbook.org/contents/linear_algebra.html) in [Deep Learning](https://www.deeplearningbook.org) by Ian Goodfellow, Yoshua Bengio and Aaron Courville. -->
 
-[^greaterweight]: The weight can be negative.
+<!-- [^greaterweight]: The weight can be negative. -->
 
-[^sklearn]: [Scikit-learn](https://scikit-learn.org/stable/) is a machine learning library that can be used for many kinds of machine learning tasks. It also comes with many data sets.
+<!-- [^sklearn]: [Scikit-learn](https://scikit-learn.org/stable/) is a machine learning library that can be used for many kinds of machine learning tasks. It also comes with many data sets. -->
 
-[^ann]: Despite the name contains 'neural network', and it is often said to be 'inspired' by how a human brain works, artificial neural network has very little to do with neuroscience.
+<!-- [^ann]: Despite the name contains 'neural network', and it is often said to be 'inspired' by how a human brain works, artificial neural network has very little to do with neuroscience. -->
 
-[^reshapearray]: Since the `fit_transform` function accepts a 2-dimensional NumPy array, we need to reshape the array `target` into an array with two axes. See [this w3schools tutorial](https://www.w3schools.com/python/numpy/numpy_array_reshape.asp) if you want to know more about reshaping in NumPy.
+<!-- [^reshapearray]: Since the `fit_transform` function accepts a rank-2 NumPy array, we need to reshape the array `target` into an array with two axes. See [this w3schools tutorial](https://www.w3schools.com/python/numpy/numpy_array_reshape.asp) if you want to know more about reshaping in NumPy. -->
 
-[^tensor]: Actually, TensorFlow processes input vectors in batches. Therefore, this `Input` data structure is a multi-dimensional array called *tensor* (not to be confused with the tensor in functional analysis) instead of a single vector.
+<!-- [^tensor]: Actually, TensorFlow processes input vectors in batches. Therefore, this `Input` data structure is a multi-dimensional array called *tensor* (not to be confused with the tensor in functional analysis) instead of a single vector. -->
 
-[^interpolation]: This is basically ***interpolation***, which means new data points are constructed or found based on the range of known data points.
+<!-- [^interpolation]: This is basically ***interpolation***, which means new data points are constructed or found based on the range of known data points. -->
 
-[^supervisedlearning]: Data together with answers are labelled data, and machine learning with labelled data is called ***supervised learning***. In fact, there are *unsupervised* machine learning methods, but they are out of the scope of this tutorial.
+<!-- [^supervisedlearning]: Data together with answers are labelled data, and machine learning with labelled data is called ***supervised learning***. In fact, there are *unsupervised* machine learning methods, but they are out of the scope of this tutorial. -->
 
-[^trainingdata]: We should always divide the data set into the training and testing data sets first. We need a testing data set that is not seen by the model to test the model accurately.
+<!-- [^trainingdata]: We should always divide the data set into the training and testing data sets first. We need a testing data set that is not seen by the model to test the model accurately. -->
